@@ -163,10 +163,6 @@ console.log(
   `today date is ${newDate.getDate()} and year is ${newDate.getFullYear()} and day is ${newDate.getDay()}`
 );
 
-
-
-
-
 // ******************************* Array*************************
 
 const arr = [1, 2, 3, 4, 5];
@@ -207,102 +203,184 @@ const anotherAllPirates = [...pirates, ...yonko]; //merge two array in the new o
 console.log(anotherAllPirates);
 
 pirates.push(yonko); // push array in the existing array
-console.log(pirates); 
-
-
+console.log(pirates);
 
 //****
- 
-const complicated_Array =[2,3,4,[4,6,7],[6,7,8,[9,10]]]; 
-const simple_array=complicated_Array.flat(Infinity); //return a new array with all sub array element  
-console.log(simple_array); 
-console.log(complicated_Array); //no changes in the main array 
 
-/////////////////////  
+const complicated_Array = [2, 3, 4, [4, 6, 7], [6, 7, 8, [9, 10]]];
+const simple_array = complicated_Array.flat(Infinity); //return a new array with all sub array element
+console.log(simple_array);
+console.log(complicated_Array); //no changes in the main array
 
-console.log(Array.isArray("rishang"));  //asking that is this array
-console.log(Array.from("rishang"));  // converting to the array 
-console.log(Array.from({name:"rishang"})) //interesting case and output =>[] empty array
- 
-const rank1=100; 
-const rank2=200; 
-const rank3=300; 
+/////////////////////
 
-const all_rank= Array.of(rank1,rank2,rank3); //cpnvert and merged also 
-console.log("a:",all_rank); 
+console.log(Array.isArray("rishang")); //asking that is this array
+console.log(Array.from("rishang")); // converting to the array
+console.log(Array.from({ name: "rishang" })); //interesting case and output =>[] empty array
 
-const all_rank2=Array.from(rank1); //unable to convert 
-console.log(all_rank2); 
-const all_rank3=Array.from(String(rank1));// convert into string then into array ,100=>['1','0','0']
-console.log("c",all_rank3);
-const all_rank4=Array.from(String(rank1),Number);// convert into string then into  mumber, 100=> [1,0,0]
-console.log("d",all_rank4); 
+const rank1 = 100;
+const rank2 = 200;
+const rank3 = 300;
 
+const all_rank = Array.of(rank1, rank2, rank3); //cpnvert and merged also
+console.log("a:", all_rank);
 
+const all_rank2 = Array.from(rank1); //unable to convert
+console.log(all_rank2);
+const all_rank3 = Array.from(String(rank1)); // convert into string then into array ,100=>['1','0','0']
+console.log("c", all_rank3);
+const all_rank4 = Array.from(String(rank1), Number); // convert into string then into  mumber, 100=> [1,0,0]
+console.log("d", all_rank4);
 
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^Objects^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+//singleton :  literal =>no  ,Constructor=> yes
 
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^Objects^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   
+//object  literals declartion
 
-//singleton :  literal =>no  ,Constructor=> yes 
+const mySym = Symbol("key1");
 
-//object  literals declartion   
+const jsUser = {
+  //we can't see but every key is treatd like string at time of compilation
+  name: "rishang kumar",
+  "fullName": "rishang kumar choudhary", //another method to declare
+  age: 2,
+  location: "greator noida",
+  [mySym]: "key2", //here we are declaring symbol using =>[]
+  email: "rishangkumar@gmail.com",
+  isLoggedIn: false,
+  lastLoginDays: ["Monday", "saturday"],
+};
+console.log(jsUser.email);
+console.log(jsUser["location"]); // better method in this we can access keys which declare =>""
+console.log(jsUser[mySym]); //no need to write=> ""  only for symbol
 
-const mySym=  Symbol("key1")
+///--------------If u dont want  to do chnges in your object  then =>
 
-const jsUser={ 
+jsUser.email = "hello@gmail.com";
+// Object.freeze(jsUser);    // object is freezed
+console.log(jsUser); //no error but no changes
 
-  //we can't see but every key is treatd like string at time of compilation 
-  name:"rishang kumar",  
-  "fullName":'rishang kumar choudhary', //another methoda to declare 
-  age:2, 
-  location:"greator noida", 
-  [mySym]:"key2", //here we are declaring symbol using =>[] 
-  email:"rishangkumar@gmail.com", 
-  isLoggedIn:false, 
-  lastLoginDays:["Monday","saturday"]
-} 
-console.log(jsUser.email); 
-console.log(jsUser["location"]);// better method in this we can access keys which declare =>"" 
-console.log(jsUser[mySym]); //no need to write symbol in "" only for symbol    
+jsUser.greeting = function () {
+  console.log("hello js");
+};
 
+console.log(jsUser.greeting); //function anonymous
+console.log(jsUser.greeting()); // hello js
 
-
-
-///--------------If u dont want  to do chnges in your object  then => 
-
-jsUser.email= "hello@gmail.com";  
-// Object.freeze(jsUser);    // object is freezed   
-console.log(jsUser) //no error but no changes 
-
-jsUser.greeting=function(){
-  console.log("hello js"); 
-}
- 
-console.log(jsUser.greeting); //function anonymous  
-console.log(jsUser.greeting()); // hello js 
-
-jsUser.greetingTwo= function(){
-  console.log(`hello js user, ${this.name} `) 
-} 
-console.log(jsUser.greetingTwo);  //function anomymous
+jsUser.greetingTwo = function () {
+  console.log(`hello js user, ${this.name} `);
+};
+console.log(jsUser.greetingTwo); //function anomymous
 console.log(jsUser.greetingTwo()); //hello js user  rishang kr
 
+//  !!!!!!!!!!!!!! Object singleton =>
+
+// const tinderUser= {}this is  not singleton object
+
+const tinderUser = new Object(); //this is singleton object  by constructor method
+tinderUser.id = "123abc";
+tinderUser.name = "rishang";
+tinderUser.isLoggedIn = false;
+
+console.log(tinderUser);
+
+const regularUser = {
+  email: "hello12.com",
+  fullName: {
+    userFullName: {
+      firstName: "rishang",
+      lastName: "kumar",
+    },
+  },
+};
+console.log(regularUser.fullName.userFullName.firstName);
+console.log(regularUser.fullName.userFullName.lastName);
+
+// combining object
+
+const obj1 = { 1: "a", 2: "b" };
+const obj2 = { 3: "c", 4: "d" };
+
+const obj3 = { obj1, obj2 }; //object under object
+console.log(obj3);
+
+const obj4 = Object.assign(obj1, obj2);
+console.log("a", obj4);
+
+const obj5 = { ...obj1, ...obj2 }; //2nd method after using this=> ...  problem solved
+console.log("b", obj5);
+
+// ~~~~~~~~TO  know values and keys from the obj
+
+console.log(Object.keys(tinderUser)); //return type array
+console.log(Object.values(tinderUser));
+
+//_____________to get every values of key in  each array
+
+console.log(Object.entries(tinderUser));
+
+// >.............. to know key is available in the obj
+
+console.log(tinderUser.hasOwnProperty("id")); // true
+console.log(tinderUser.hasOwnProperty("matches")); //false
+ 
 
 
-//  !!!!!!!!!!!!!! Object singleton => 
+// >>>>>>>>>>>>>>>>>>>>>>>> object destructurinig >>>>>>>>>>>>>>>>> 
 
-// const tinderUser= {}this is  not singleton object  
+  
+const anime ={
+  aimeName:"One peice", 
+  rank:"one", 
+
+} 
+
+const {aimeName:animeName,rank}=anime //here we are destructuring 
+ 
+console.log(rank); //one 
+console.log(animeName); // one peice 
+
+
+// ................. Functions .................................  
+
+function addTwoNumber(num1,num2){  //num1,num2 is parameters 
+    console.log(num1 + num2)
+} 
+
+addTwoNumber(4,2); //4,2 is arguements  
+
+
+function addAnotherTwoNumbers(num1,num2){  
+    console.log(num1 + num2)
+} 
+
+ const result=addAnotherTwoNumbers(4,6);   //10
+
+ console.log("result is :",result); //undefined bcz we are not returning anything 
 
 
 
-const tinderUser= new Object() //this is singleton object  
-tinderUser.id="123abc" 
-tinderUser.name="rishang" 
-tinderUser.isLoggedIn= false  
 
-console.log(tinderUser)
+function addAnotherTwoNumber(num1,num2){   
+  return ((num1 + num2)) 
+  console.log("rishang") //never executed
+} 
 
+ const anotherResult=addAnotherTwoNumber(14,6);   //20
 
+ console.log("anotherresult is :",anotherResult);  
 
+ function loginUserName(username){  
+  if(username === undefined  ){// (!username) another way
+   console.log("please enter username") 
+   return  //code ends here 
+  }
+  return `${username} just logged in `  //not executed if if conditon is true
 
+ } 
+ console.log(loginUserName("rishang")); // rishang just logged in
+ console.log(loginUserName("")); // just logged in
+ console.log(loginUserName()); //undefined just logged in
+ console.log(loginUserName(4)); //4 just logged in
+//  console.log(loginUserName(hello)); errorr 
