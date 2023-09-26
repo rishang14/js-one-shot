@@ -383,4 +383,82 @@ function addAnotherTwoNumber(num1,num2){
  console.log(loginUserName("")); // just logged in
  console.log(loginUserName()); //undefined just logged in
  console.log(loginUserName(4)); //4 just logged in
-//  console.log(loginUserName(hello)); errorr 
+//  console.log(loginUserName(hello)); error   
+
+
+
+
+// pass multiple values in function and store them in array 
+
+
+// ********  (...) it is called both  rest and  spread operator
+
+ function calculateCartPrice(...num1){  
+
+  return num1 
+ } 
+
+ console.log(calculateCartPrice(200,300,400)) // [200,300,400] 
+
+
+ function calculateCartPrices(val1,val2,...num1){  
+
+  return num1 
+ } 
+
+ console.log(calculateCartPrices(200,300,400,500)) // [400,500] val1=200,val2=300 rest in num1 
+
+
+
+
+//  ----how to pass object in function  
+  
+
+const user={
+  userName:"Rishang", 
+  price:200000000000
+} 
+
+function handleObject(userObject){
+  console.log(`username is ${userObject.userName} and price is ${userObject.price}`)
+}  
+
+handleObject(user); // or  
+handleObject({
+  userName:"gabru", 
+  price:10000000000
+})  
+
+
+//  ----how to pass array in function   
+
+const myNewArray=[200,300,400]; 
+
+function returnArrayValue(getArray){ 
+   
+  return getArray[1]
+
+} 
+console.log(returnArrayValue(myNewArray)); //or
+console.log(returnArrayValue([300,400,600]));  
+
+
+//'''''''''''''''''''''''''' Scopes''''''''''''''''''''''  
+
+var c=300; //global scope accessible in block 
+
+ if(true){ // block scope  not accessible in global
+  let a=20 
+  const b=30  
+  var c=40 
+} 
+// console.log(a) error
+// console.log(b) error
+   console.log(c) // 40   
+
+//browser console scope is different and code global scope is different  
+
+
+
+
+
