@@ -459,6 +459,91 @@ var c=300; //global scope accessible in block
 //browser console scope is different and code global scope is different  
 
 
+ 
+// nested scopes  
+
+ function one(){
+  const userName="rishang" 
+
+  function two(){
+     const website="yt" 
+     console.log(userName); 
+
+  } 
+  // console.log(website);   error 
+
+  two()
+ }
+ 
+ one(); 
+
+//   :::::::::::::::::::important point ::::::::::::::;;  
+//like a hoisting 
 
 
+console.log(addone(5))  //6
+
+
+function addone(num){
+  return num +1
+}
+
+
+//  console.log(addTwo(6))  error accessing before initialization 
+
+ const addTwo=function addone(num){
+  return num + 2
+}
+ 
+
+
+
+//  """""''''''''''''" This and Arrow function """""''''''''''''''" 
+
+ const users={    
+  username:"rishang", 
+  age:20, 
+
+  welcomeMessage:function(){
+    console.log(`${this.username} , welcome to my profile`); //this refers the current context if we hardcoded that then we get  error 
+    console.log(this);
+  }
+
+ }  
+
+ users.welcomeMessage();   //rishang ,welcome to my profile 
+ users.username= "gabru";  //here we changed the context  
+ users.welcomeMessage();   //gabru welcome to my profile   
+ console.log(this)//{}
+
+//  'Note': in browser global obj is window object 
+
+
+
+function checking(){
+  const user="rishang" 
+  // console.log(this.user);  undefined and error  
+  // console.log(this) many methods will shown 
+} 
+
+checking() 
+ 
+
+
+//  Arrow function 
+ 
+
+const addition=(num1,num2)=>{
+  return num1 + num2 //explicit return
+} 
+console.log(addition(3,5)) 
+
+
+const add=(num1,num2)=> num1 + num2  // implicit return 
+//const add=(num1,num2)=> (num1 + num2)   implicit return 
+console.log(add(3,5)) 
+
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IIFE>>>>>>>>>>>>>>>>>>>>>>>>> 
+ 
 
