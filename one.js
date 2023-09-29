@@ -23,6 +23,7 @@ Reference (Non -primitive data types)
 const id = Symbol("123");
 const anotherId = Symbol("123");
 console.log(id === anotherId); // false
+
 //*************************conversion*************************
 
 let score = "33abc";
@@ -46,16 +47,17 @@ console.log(booleanIsLoggedIn);
 let value = 3;
 let negValue = -value;
 console.log(negValue);
-console.log("2" + "2");
+console.log("2" + "2"); //22
 console.log(((4 % 3) * 2 * 5) % 3); // 1
 
 // ******************************Comparison *********************
 
-console.log(null > 0);
-console.log(null == 0);
-console.log(null >= 0);
+console.log(null > 0); //false
+console.log(null == 0); // flase
+console.log(null >= 0); //true
 console.log("2" == 2); //true
 console.log("2" === 2); //false
+console.log(2 > 2); //false
 
 /* 
  The reason is that an equality check == and comparisions > < >= <= works differently .  
@@ -73,7 +75,7 @@ console.log("2" === 2); //false
 let myName = "rishang";
 let againMyName = myName;
 myName = "hero";
-console.log(myName);
+console.log(myName); //hero
 console.log(againMyName); // it create a copy so value not changed
 // +++++++++++++++++++++++Example of heap ++++++++++++++++++++++++
 
@@ -105,9 +107,11 @@ console.log(gameName.indexOf("b")); //accessong   index number  by passing strin
 // ********************* Numbers and Maths ***********************
 
 const scores = 400; //simple method
-const balance = new Number(300); //strict method
-
+const balance = new Number(3); //strict method
 console.log(balance.toFixed(2)); //like this 300.00 because we give (2)
+
+const newNumber = new Number("a");
+console.log(newNumber); //nan (not a number)
 
 const anotherNumber = 123.897;
 console.log(anotherNumber.toPrecision(5)); //123.90
@@ -172,7 +176,7 @@ const arr = [1, 2, 3, 4, 5];
 arr.push(6); //push the element in main array at the end
 arr.unshift(9); //push the element in main array at starting
 arr.shift(); //remove the first element of the array
-arr.pop(); //remove the laast element of the array
+arr.pop(); //remove the last element of the array
 console.log(arr.includes(3)); //search  element in main array
 
 const newArr = arr.join(); //join and convert to string
@@ -225,8 +229,8 @@ const rank3 = 300;
 const all_rank = Array.of(rank1, rank2, rank3); //cpnvert and merged also
 console.log("a:", all_rank);
 
-const all_rank2 = Array.from(rank1); //unable to convert
-console.log(all_rank2);
+const all_rank2 = Array.from(rank1); //unable to convert []empty array
+console.log("b:", all_rank2);
 const all_rank3 = Array.from(String(rank1)); // convert into string then into array ,100=>['1','0','0']
 console.log("c", all_rank3);
 const all_rank4 = Array.from(String(rank1), Number); // convert into string then into  mumber, 100=> [1,0,0]
@@ -243,7 +247,7 @@ const mySym = Symbol("key1");
 const jsUser = {
   //we can't see but every key is treatd like string at time of compilation
   name: "rishang kumar",
-  "fullName": "rishang kumar choudhary", //another method to declare
+  fullName: "rishang kumar choudhary", //another method to declare
   age: 2,
   location: "greator noida",
   [mySym]: "key2", //here we are declaring symbol using =>[]
@@ -283,7 +287,7 @@ tinderUser.id = "123abc";
 tinderUser.name = "rishang";
 tinderUser.isLoggedIn = false;
 
-console.log(tinderUser);
+console.log("obj:", tinderUser);
 
 const regularUser = {
   email: "hello12.com",
@@ -324,226 +328,295 @@ console.log(Object.entries(tinderUser));
 
 console.log(tinderUser.hasOwnProperty("id")); // true
 console.log(tinderUser.hasOwnProperty("matches")); //false
- 
 
+// >>>>>>>>>>>>>>>>>>>>>>>> object destructurinig >>>>>>>>>>>>>>>>>
 
-// >>>>>>>>>>>>>>>>>>>>>>>> object destructurinig >>>>>>>>>>>>>>>>> 
+const anime = {
+  aimeName: "One peice",
+  rank: "one",
+};
 
-  
-const anime ={
-  aimeName:"One peice", 
-  rank:"one", 
+const { aimeName: animeName, rank } = anime; //here we are destructuring
 
-} 
+console.log(rank); //one
+console.log(animeName); // one peice
 
-const {aimeName:animeName,rank}=anime //here we are destructuring 
- 
-console.log(rank); //one 
-console.log(animeName); // one peice 
+// ................. Functions .................................
 
+function addTwoNumber(num1, num2) {
+  //num1,num2 is parameters
+  console.log(num1 + num2);
+}
 
-// ................. Functions .................................  
+addTwoNumber(4, 2); //4,2 is arguements
 
-function addTwoNumber(num1,num2){  //num1,num2 is parameters 
-    console.log(num1 + num2)
-} 
+function addAnotherTwoNumbers(num1, num2) {
+  console.log(num1 + num2);
+}
 
-addTwoNumber(4,2); //4,2 is arguements  
+const result = addAnotherTwoNumbers(4, 6); //10
 
+console.log("result is :", result); //undefined bcz we are not returning anything
 
-function addAnotherTwoNumbers(num1,num2){  
-    console.log(num1 + num2)
-} 
+function addAnotherTwoNumber(num1, num2) {
+  return num1 + num2;
+  console.log("rishang"); //never executed
+}
 
- const result=addAnotherTwoNumbers(4,6);   //10
+const anotherResult = addAnotherTwoNumber(14, 6); //20
 
- console.log("result is :",result); //undefined bcz we are not returning anything 
+console.log("anotherresult is :", anotherResult);
 
-
-
-
-function addAnotherTwoNumber(num1,num2){   
-  return ((num1 + num2)) 
-  console.log("rishang") //never executed
-} 
-
- const anotherResult=addAnotherTwoNumber(14,6);   //20
-
- console.log("anotherresult is :",anotherResult);  
-
- function loginUserName(username){  
-  if(username === undefined  ){// (!username) another way
-   console.log("please enter username") 
-   return  //code ends here 
+function loginUserName(username) {
+  if (username === undefined) {
+    // (!username) another way
+    console.log("please enter username");
+    return; //code ends here
   }
-  return `${username} just logged in `  //not executed if if conditon is true
+  return `${username} just logged in `; //not executed if if conditon is true
+}
+console.log(loginUserName("rishang")); // rishang just logged in
+console.log(loginUserName("")); // just logged in
+console.log(loginUserName()); //undefined just logged in
+console.log(loginUserName(4)); //4 just logged in
+//  console.log(loginUserName(hello)); error
 
- } 
- console.log(loginUserName("rishang")); // rishang just logged in
- console.log(loginUserName("")); // just logged in
- console.log(loginUserName()); //undefined just logged in
- console.log(loginUserName(4)); //4 just logged in
-//  console.log(loginUserName(hello)); error   
-
-
-
-
-// pass multiple values in function and store them in array 
-
+// pass multiple values in function and store them in array
 
 // ********  (...) it is called both  rest and  spread operator
 
- function calculateCartPrice(...num1){  
+function calculateCartPrice(...num1) {
+  return num1;
+}
 
-  return num1 
- } 
+console.log(calculateCartPrice(200, 300, 400)); // [200,300,400]
 
- console.log(calculateCartPrice(200,300,400)) // [200,300,400] 
+function calculateCartPrices(val1, val2, ...num1) {
+  return num1;
+}
 
+console.log(calculateCartPrices(200, 300, 400, 500)); // [400,500] val1=200,val2=300 rest in num1
 
- function calculateCartPrices(val1,val2,...num1){  
+//  ----how to pass object in function
 
-  return num1 
- } 
+const user = {
+  userName: "Rishang",
+  price: 200000000000,
+};
 
- console.log(calculateCartPrices(200,300,400,500)) // [400,500] val1=200,val2=300 rest in num1 
+function handleObject(userObject) {
+  console.log(
+    `username is ${userObject.userName} and price is ${userObject.price}`
+  );
+}
 
-
-
-
-//  ----how to pass object in function  
-  
-
-const user={
-  userName:"Rishang", 
-  price:200000000000
-} 
-
-function handleObject(userObject){
-  console.log(`username is ${userObject.userName} and price is ${userObject.price}`)
-}  
-
-handleObject(user); // or  
+handleObject(user); // or
 handleObject({
-  userName:"gabru", 
-  price:10000000000
-})  
+  userName: "gabru",
+  price: 10000000000,
+});
 
+//  ----how to pass array in function
 
-//  ----how to pass array in function   
+const myNewArray = [200, 300, 400];
 
-const myNewArray=[200,300,400]; 
-
-function returnArrayValue(getArray){ 
-   
-  return getArray[1]
-
-} 
+function returnArrayValue(getArray) {
+  return getArray[1];
+}
 console.log(returnArrayValue(myNewArray)); //or
-console.log(returnArrayValue([300,400,600]));  
+console.log(returnArrayValue([300, 400, 600]));
 
+//'''''''''''''''''''''''''' Scopes''''''''''''''''''''''
 
-//'''''''''''''''''''''''''' Scopes''''''''''''''''''''''  
+var c = 300; //global scope accessible in block
 
-var c=300; //global scope accessible in block 
-
- if(true){ // block scope  not accessible in global
-  let a=20 
-  const b=30  
-  var c=40 
-} 
+if (true) {
+  // block scope  not accessible in global
+  let a = 20;
+  const b = 30;
+  var c = 40;
+}
 // console.log(a) error
 // console.log(b) error
-   console.log(c) // 40   
+console.log(c); // 40
 
-//browser console scope is different and code global scope is different  
+//browser console scope is different and code global scope is different
 
+// nested scopes
 
- 
-// nested scopes  
+function one() {
+  const userName = "rishang";
 
- function one(){
-  const userName="rishang" 
-
-  function two(){
-     const website="yt" 
-     console.log(userName); 
-
-  } 
-  // console.log(website);   error 
-
-  two()
- }
- 
- one(); 
-
-//   :::::::::::::::::::important point ::::::::::::::;;  
-//like a hoisting 
-
-
-console.log(addone(5))  //6
-
-
-function addone(num){
-  return num +1
-}
-
-
-//  console.log(addTwo(6))  error accessing before initialization 
-
- const addTwo=function addone(num){
-  return num + 2
-}
- 
-
-
-
-//  """""''''''''''''" This and Arrow function """""''''''''''''''" 
-
- const users={    
-  username:"rishang", 
-  age:20, 
-
-  welcomeMessage:function(){
-    console.log(`${this.username} , welcome to my profile`); //this refers the current context if we hardcoded that then we get  error 
-    console.log(this);
+  function two() {
+    const website = "yt";
+    console.log(userName);
   }
+  // console.log(website);   error
 
- }  
+  two();
+}
 
- users.welcomeMessage();   //rishang ,welcome to my profile 
- users.username= "gabru";  //here we changed the context  
- users.welcomeMessage();   //gabru welcome to my profile   
- console.log(this)//{}
+one();
 
-//  'Note': in browser global obj is window object 
+//   :::::::::::::::::::important point ::::::::::::::;;
+//like a hoisting
 
+console.log(addone(5)); //6
 
+function addone(num) {
+  return num + 1;
+}
 
-function checking(){
-  const user="rishang" 
-  // console.log(this.user);  undefined and error  
-  // console.log(this) many methods will shown 
-} 
+//  console.log(addTwo(6))  error accessing before initialization
 
-checking() 
+const addTwo = function addone(num) {
+  return num + 2;
+};
+
+//  """""''''''''''''" This and Arrow function """""''''''''''''''"
+
+const users = {
+  username: "rishang",
+  age: 20,
+
+  welcomeMessage: function () {
+    console.log(`${this.username} , welcome to my profile`); //this refers the current context if we hardcoded that then we get  error
+    console.log(this);
+  },
+};
+
+users.welcomeMessage(); //rishang ,welcome to my profile
+users.username = "gabru"; //here we changed the context
+users.welcomeMessage(); //gabru welcome to my profile
+console.log(this); //{}
+
+//  'Note': in browser global obj is window object
+
+function checking() {
+  const user = "rishang";
+  // console.log(this.user);  undefined and error
+  // console.log(this) many methods will shown
+}
+
+checking();
+
+//  Arrow function
+
+const addition = (num1, num2) => {
+  return num1 + num2; //explicit return
+};
+console.log(addition(3, 5));
+
+const add = (num1, num2) => num1 + num2; // implicit return
+//const add=(num1,num2)=> (num1 + num2)   implicit return
+console.log(add(3, 5));
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IIFE>>>>>>>>>>>>>>>>>>>>>>>>>
+
+// >>>>>>>>>>>>>>>>>Control flow >>>>>>>>>>>>>>>>>>>>>>
+
+// switch case
+
+const month = "january";
+
+switch (month) {
+  case "january":
+    console.log("january");
+    break;
+  case 2:
+    console.log("february");
+    break;
+  case 3:
+    console.log("march");
+    break;
+
+  default:
+    console.log("defualt case");
+    break;
+}
+
+//  Note: if there is no break then it will execute every other code except default
+
+/*
+falsy value:  
+
+flase ,0 ,-0,BigInt 0n ,"", null ,undefined ,Nan   
+
+truthy value: 
+  
+"0", "false", ," ",[], {}, function(){}    
+
  
+just for knowing purpose 
 
-
-//  Arrow function 
  
+false==0  => true 
+false =='' => true 
+0=='' => true
 
-const addition=(num1,num2)=>{
-  return num1 + num2 //explicit return
-} 
-console.log(addition(3,5)) 
+*/
+
+//  .............how to know array is empty
+
+const myArr = [];
+
+if (myArr.length === 0) {
+  console.log("empty array");
+}
+
+//  .............how to know object is empty
+
+const myObj = {};
+
+if (Object.keys(myObj).length === 0) {
+  console.log("0bject is empty");
+}
+
+// Nullish Coalescing Operator (??) ; null undefined
+
+let val1;
+val1 = 5 ?? 10; // 5
+val1 = null ?? 15; // 15
+val1 = undefined ?? 10; //10
+val1 = null ?? 20 ?? 10; //after null  value will assigned means 20
+console.log(val1);
+
+//  >>>>>>>>>>>>>> Loops >>>>>>>>>>>>>>>>>>>>>>>>..   
 
 
-const add=(num1,num2)=> num1 + num2  // implicit return 
-//const add=(num1,num2)=> (num1 + num2)   implicit return 
-console.log(add(3,5)) 
-
-
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>IIFE>>>>>>>>>>>>>>>>>>>>>>>>> 
+ for(let i=1; i <=10; i++){
+      console.log(`value of outer loop ${i}`) 
+      for(let j=1;j<=10 ;j++){
+        console.log(`we are in inner loop and value of j is ${j} and i is ${i}`) 
+        // console.log( i + " * " + j+  "=" + i*j)
+      }
+ } 
  
+ // ........... Continue and break ........... 
 
+ for(let i=0; i<20; i++){
+ 
+  if(i==3){
+    console.log("3 detected")  
+    break;
+  }
+  console.log(`value of i is ${i}`)
+ } 
+
+
+
+ for(let i=0; i<7; i++){
+ 
+  if(i==3){
+    console.log("value  3 is skipped")  
+    continue;
+  }
+  console.log(`value of i is ${i}`)
+ } 
+  
+
+  
+ 
+  
+
+  
