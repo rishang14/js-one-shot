@@ -226,7 +226,7 @@ const rank1 = 100;
 const rank2 = 200;
 const rank3 = 300;
 
-const all_rank = Array.of(rank1, rank2, rank3); //cpnvert and merged also
+const all_rank = Array.of(rank1, rank2, rank3); //convert and merged also
 console.log("a:", all_rank);
 
 const all_rank2 = Array.from(rank1); //unable to convert []empty array
@@ -375,9 +375,9 @@ function loginUserName(username) {
   }
   return `${username} just logged in `; //not executed if if conditon is true
 }
+console.log("a",loginUserName()); //please enter username undefined
 console.log(loginUserName("rishang")); // rishang just logged in
 console.log(loginUserName("")); // just logged in
-console.log(loginUserName()); //undefined just logged in
 console.log(loginUserName(4)); //4 just logged in
 //  console.log(loginUserName(hello)); error
 
@@ -616,7 +616,39 @@ console.log(val1);
   
 
   
+//  ///////////// while looop ///////////////////////////  
+
+
+let index=0
+
+while(index<=10){
+  console.log(`value of index is ${index}`) 
+  index +=2;
+}
  
+
+let yonkos=["luffy","shanks","kaido","BigMom"]; 
+let countYonko=0; 
+
+while(countYonko < yonkos.length){
+  console.log(`yonkos are ${yonkos[countYonko]}`) 
+  countYonko +=1;
+} 
+
+ 
+// '''''''''''''Do while'''''''''''''''''''' 
+
+let scoress=1; 
+
+do{
+  console.log(`scores is ${scoress}`) 
+  scoress++
+}while(scoress <=3);
+ 
+
+
+
+
   
 
   
