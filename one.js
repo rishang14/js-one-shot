@@ -375,7 +375,7 @@ function loginUserName(username) {
   }
   return `${username} just logged in `; //not executed if if conditon is true
 }
-console.log("a",loginUserName()); //please enter username undefined
+console.log("a", loginUserName()); //please enter username undefined
 console.log(loginUserName("rishang")); // rishang just logged in
 console.log(loginUserName("")); // just logged in
 console.log(loginUserName(4)); //4 just logged in
@@ -581,74 +581,169 @@ val1 = undefined ?? 10; //10
 val1 = null ?? 20 ?? 10; //after null  value will assigned means 20
 console.log(val1);
 
-//  >>>>>>>>>>>>>> Loops >>>>>>>>>>>>>>>>>>>>>>>>..   
+//  >>>>>>>>>>>>>> Loops >>>>>>>>>>>>>>>>>>>>>>>>..
 
+for (let i = 1; i <= 10; i++) {
+  console.log(`value of outer loop ${i}`);
+  for (let j = 1; j <= 10; j++) {
+    console.log(`we are in inner loop and value of j is ${j} and i is ${i}`);
+    // console.log( i + " * " + j+  "=" + i*j)
+  }
+}
 
- for(let i=1; i <=10; i++){
-      console.log(`value of outer loop ${i}`) 
-      for(let j=1;j<=10 ;j++){
-        console.log(`we are in inner loop and value of j is ${j} and i is ${i}`) 
-        // console.log( i + " * " + j+  "=" + i*j)
-      }
- } 
- 
- // ........... Continue and break ........... 
+// ........... Continue and break ...........
 
- for(let i=0; i<20; i++){
- 
-  if(i==3){
-    console.log("3 detected")  
+for (let i = 0; i < 20; i++) {
+  if (i == 3) {
+    console.log("3 detected");
     break;
   }
-  console.log(`value of i is ${i}`)
- } 
+  console.log(`value of i is ${i}`);
+}
 
-
-
- for(let i=0; i<7; i++){
- 
-  if(i==3){
-    console.log("value  3 is skipped")  
+for (let i = 0; i < 7; i++) {
+  if (i == 3) {
+    console.log("value  3 is skipped");
     continue;
   }
-  console.log(`value of i is ${i}`)
- } 
-  
-
-  
-//  ///////////// while looop ///////////////////////////  
-
-
-let index=0
-
-while(index<=10){
-  console.log(`value of index is ${index}`) 
-  index +=2;
+  console.log(`value of i is ${i}`);
 }
- 
 
-let yonkos=["luffy","shanks","kaido","BigMom"]; 
-let countYonko=0; 
+//  ///////////// while looop ///////////////////////////
 
-while(countYonko < yonkos.length){
-  console.log(`yonkos are ${yonkos[countYonko]}`) 
-  countYonko +=1;
+let index = 0;
+
+while (index <= 10) {
+  console.log(`value of index is ${index}`);
+  index += 2;
+}
+
+let yonkos = ["luffy", "shanks", "kaido", "BigMom"];
+let countYonko = 0;
+
+while (countYonko < yonkos.length) {
+  console.log(`yonkos are ${yonkos[countYonko]}`);
+  countYonko += 1;
+}
+
+// '''''''''''''Do while''''''''''''''''''''
+
+let scoress = 1;
+
+do {
+  console.log(`scores is ${scoress}`);
+  scoress++;
+} while (scoress <= 3);
+
+//  ...........All for loop(Array specific) .................
+
+//  *****for of loop
+
+const myNumber = [1, 2, 3, 4, 5, 6];
+
+for (const num of myNumber) {
+  console.log(num);
+}
+
+const greetings = "hello world";
+
+for (const greet of greetings) {
+  console.log(`each char is ${greet}`);
+}
+
+// ...........map
+
+//  Note: if there is same key value then => 1= one 1= two 1=three output 1=> three
+
+// map is not iterable
+
+const map = new Map();
+map.set("pirate", "luffy"); //("key","value")
+map.set("anotherPirate", "zoro");
+map.set("cook", "sanji");
+
+console.log(map);
+
+/*for(const key of map){     
+  console.log(key)  return in array like this [ 'pirate', 'luffy' ] ['anotherPirate', 'zoro' ]
+} */
+
+//  .................another method  for better optimisation
+
+for (const [key, value] of map) {
+  console.log(key, "=>", value); //here we are getting values in seperate like=>(pirate => luffy)
+}
+
+// /..............for of loop in obj
+
+const gameObj = {
+  game1: "bgmi",
+  game2: "temple run",
+};
+
+/*
+for(const [key,value] of gameobj){
+  console.log(key,"-", value)    error object is not iterable 
 } 
+*/
 
- 
-// '''''''''''''Do while'''''''''''''''''''' 
+// --------------------for in loop ------------------
 
-let scoress=1; 
+const compLang = {
+  js: "javascript",
+  cpp: "c++",
+  rb: "ruby",
+};
 
-do{
-  console.log(`scores is ${scoress}`) 
-  scoress++
-}while(scoress <=3);
- 
+for (const key in compLang) {
+  if (Object.hasOwnProperty.call(compLang, key)) {
+    const element = compLang[key];
+    console.log(element);
+  }
+}
+
+////===============Array in for loop
+
+const programming = ["java", "python", "ml", "ai"];
+
+for (const key in programming) {
+  console.log(programming[key]);
+}
+
+// Note: in for in loop we also get key value  and directly value
+
+const marine = ["garp", "sengoku", "smoker", "morgan"];
+
+marine.forEach((item, index, arr) => {
+  console.log(item, index, arr);
+});
+
+// Note: we can also pass function
+
+function printme(item) {
+  console.log(item);
+}
+
+marine.forEach(printme); // garp,smoker,sengoku,morgan 
 
 
+const myCoding=[
+  {
+    languageName: "java", 
+    fileName:"jaa.jvc"
+  },{
+    languageName: "python",  
+    fileName:"python"
+  },
+  {
+    languageName: "ruby",  
+    fileName:"ruby.ruby"
+  }
+] 
+
+myCoding.forEach((item)=>{
+  console.log(item.languageName) 
+  console.log(item.fileName)
+}) 
 
 
-  
-
-  
