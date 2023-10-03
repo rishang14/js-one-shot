@@ -724,26 +724,63 @@ function printme(item) {
   console.log(item);
 }
 
-marine.forEach(printme); // garp,smoker,sengoku,morgan 
+marine.forEach(printme); // garp,smoker,sengoku,morgan
 
-
-const myCoding=[
+const myCoding = [
   {
-    languageName: "java", 
-    fileName:"jaa.jvc"
-  },{
-    languageName: "python",  
-    fileName:"python"
+    languageName: "java",
+    fileName: "jaa.jvc",
   },
   {
-    languageName: "ruby",  
-    fileName:"ruby.ruby"
-  }
-] 
+    languageName: "python",
+    fileName: "python",
+  },
+  {
+    languageName: "ruby",
+    fileName: "ruby.ruby",
+  },
+];
 
-myCoding.forEach((item)=>{
-  console.log(item.languageName) 
-  console.log(item.fileName)
-}) 
+myCoding.forEach((item) => {
+  console.log(item.languageName);
+  console.log(item.fileName);
+});
+
+const marines = ["garp", "sengoku", "smoker", "morgan"];
+
+const marinesNames = marines.forEach((item) => {
+  console.log(item);
+  return item;
+});
+
+console.log(marinesNames); // undefined bcuz foreach doesnt return any values 
 
 
+// method for returning or priniting in for each  ; 
+ 
+const num = [1, 2, 3, 4, 115,116, 117, 118, 119, 1110];  
+  
+const  newNum= [] ; 
+ 
+num.forEach((num)=>{ 
+    if(num>4) {
+      newNum.push(num)
+    }
+
+})
+ console.log(newNum);
+ 
+// '''''''''''''''''''''''''FILTER''''''''''''''''''''''''
+
+const myNumbers = [1, 2, 3, 4, 15,16, 17, 18, 19, 110];
+
+const returnedNumber=myNumbers.filter((num) => num>4);  
+console.log(returnedNumber); // return the number which satisfy the statement   
+ 
+
+const returnedNumberAgain=myNumbers.filter((num) => {
+  //  num >4  
+  return num >4 //we have to use return after  using {}
+});  
+// console.log(returnedNumberAgain)  [] empty array bcz we used {} it created scopes  
+console.log(returnedNumberAgain) ; //[15,16,17,18,19,110]
