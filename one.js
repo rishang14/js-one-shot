@@ -753,34 +753,49 @@ const marinesNames = marines.forEach((item) => {
   return item;
 });
 
-console.log(marinesNames); // undefined bcuz foreach doesnt return any values 
+console.log(marinesNames); // undefined bcuz foreach doesnt return any values
 
+// method for returning or priniting in for each  ;
 
-// method for returning or priniting in for each  ; 
- 
-const num = [1, 2, 3, 4, 115,116, 117, 118, 119, 1110];  
-  
-const  newNum= [] ; 
- 
-num.forEach((num)=>{ 
-    if(num>4) {
-      newNum.push(num)
-    }
+const num = [1, 2, 3, 4, 115, 116, 117, 118, 119, 1110];
 
-})
- console.log(newNum);
- 
+const newNum = [];
+
+num.forEach((num) => {
+  if (num > 4) {
+    newNum.push(num);
+  }
+});
+console.log(newNum);
+
 // '''''''''''''''''''''''''FILTER''''''''''''''''''''''''
 
-const myNumbers = [1, 2, 3, 4, 15,16, 17, 18, 19, 110];
+const myNumbers = [1, 2, 3, 4, 15, 16, 17, 18, 19, 110];
 
-const returnedNumber=myNumbers.filter((num) => num>4);  
-console.log(returnedNumber); // return the number which satisfy the statement   
- 
+const returnedNumber = myNumbers.filter((num) => num > 4);
+console.log(returnedNumber); // return the number which satisfy the statement
 
-const returnedNumberAgain=myNumbers.filter((num) => {
-  //  num >4  
-  return num >4 //we have to use return after  using {}
-});  
-// console.log(returnedNumberAgain)  [] empty array bcz we used {} it created scopes  
-console.log(returnedNumberAgain) ; //[15,16,17,18,19,110]
+const returnedNumberAgain = myNumbers.filter((num) => {
+  //  num >4
+  return num > 4; //we have to use return after  using {}
+});
+// console.log(returnedNumberAgain)  [] empty array bcz we used {} it created scopes
+console.log(returnedNumberAgain); //[15,16,17,18,19,110]
+
+// ................................. Map ...........................
+
+const numers = [1, 3, 4, 5, 6, 7, 8];
+
+const newnumers = numers.map((num) => num + 10);
+console.log(newnumers); // 11,13,14,15,16,17,18
+
+// ......................chaining
+
+const anothernumm = numers
+  .map((num) => num * 10)
+  .map((num) => num + 1)
+  .filter((num) => num >= 40);
+
+console.log(anothernumm);
+
+// .............REDUCE................................
