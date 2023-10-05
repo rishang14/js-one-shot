@@ -798,4 +798,36 @@ const anothernumm = numers
 
 console.log(anothernumm);
 
-// .............REDUCE................................
+// .............REDUCE................................ 
+
+const values=[1,2,3] 
+  
+const myTotal=values.reduce((acc,curval)=>{   // acc=> accumulator, curval=>currentvalue
+  console.log(`acc: ${acc}, curval:${curval}`) 
+  return acc + curval
+
+},0) //acc doesn't know from where to start so we have to pass initial value in this case we are passing 0
+ 
+console.log(myTotal) 
+
+const shoppingCart =[
+  {
+    itemName:"js course", 
+    price:999
+  },
+  {
+    itemName:"java course", 
+    price:1999
+  },
+  {
+    itemName:"python course", 
+    price:3999
+  },
+  {
+    itemName:"web dev course", 
+    price:9999
+  } 
+] 
+ 
+const priceToPay=shoppingCart.reduce((acc,item)=> acc + item.price,0); 
+console.log(priceToPay) //16996
