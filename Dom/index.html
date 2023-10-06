@@ -31,7 +31,7 @@
     </div>
   </body>
   <script>
-    const parent = document.querySelector(".parent");
+    const parent = document.querySelector(".parent");         
     console.log(parent); // parent class
     console.log(parent.children); // Html collection of all children under parent element
     //   Note: we get html collection so we can use some array property
@@ -39,7 +39,7 @@
     console.log(parent.children[3].innerHTML); // thursday
     console.log(parent.children[5]); // undefined out of length of html collectoin
 
-    //  ...Accessing first and last child of parent elemnent
+    //  ...Accessing first and last child of parent elemnent                   
     console.log(parent.firstElementChild); //<div class="day">monday</div>
     console.log(parent.lastElementChild); //<div class="day">thursday</div>
 
@@ -49,9 +49,9 @@
     console.log(childElement.parentElement); //<div class="parent">…</div>  
      
     //  ...Acessing sibling element 
-    console.log(childElement.nextElementSibling); // means  the  element we get after monday  
+    console.log(childElement.nextElementSibling); // means  the  element we get after monday     
      
-   //.........Important point  
+   //.........Important point     
     // Nodes 
     console.log("Nodes:", parent.childNodes);// complex node like this NodeList(9) [text, div.day, text, div.day, text, div.day, text, div.day, text]
   </script>  
@@ -69,7 +69,9 @@
   div.innerText="I am created div ;"; 
   // optimised way to do this is 
   const createdText=document.createTextNode(" I am also created text"); 
-  div.appendChild(createdText);  // text is addded  and not overwrites previous one 
+  div.appendChild(createdText);  // text is addded  and not overwrites previous one  
+ // or 
+ div.appendChild(document.createTextNode(" created text"));
  
   //  ..added our created child to main body 
    document.body.appendChild(div);
@@ -89,7 +91,7 @@
     // optimise method ................. 
     function addoptimiseLang(langName){ 
       const li=document.createElement("li"); 
-      li.appendChild(document.createTextNode(langName)); 
+      li.appendChild(document.createTextNode(langName)); // difference is this line only and it is debatable topic
       document.querySelector(".language").appendChild(li); 
 
     } 
