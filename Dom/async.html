@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async </title>
+</head>
+<body> 
+    <h2>Async project </h2>
+    <button id="stop">stop</button>
+    <button id="start">start interval </button>
+    <button id="stopinterval">stop interval </button>
+    
+</body> 
+<script> 
+const sayMyName=()=>{
+   console.log("rishang")
+    } 
+
+    // ........set timeout and clear timeout 
+    setTimeout(sayMyName,2000) 
+     
+     const changeText= ()=>{
+        document.querySelector('h2').innerHTML="best project" 
+
+     } 
+    const changeMe= setTimeout(changeText,3000); 
+    document.querySelector('#stop').addEventListener('click',()=>{
+        clearTimeout(changeMe) 
+        console.log("i am stopped");
+    })  
+    // ....... srt interval and clear interval ......  
+    const sayDate= (str)=>{
+        console.log(str,Date.now());
+    }
+ 
+  // const intervalid= setInterval(sayDate, 1000,"hlo"); it takes 3 rd argument as a parameter   
+  let interval;
+  
+  
+  document.getElementById('start').addEventListener('click',startinterval);
+  document.getElementById('stopinterval').addEventListener('click',stopinterval); 
+
+  function startinterval(){
+     interval= setInterval(sayDate,1000, "hlo")
+  } 
+  function stopinterval(){
+     clearInterval(interval); 
+     console.log( ' i am stopped ');
+  }
+
+
+</script>
+</html>
