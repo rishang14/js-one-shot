@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All about api </title>
+</head>
+<body>
+    <div class="card">
+        <img src="" alt="Avatar" style="width:100%">
+        <div class="container">
+          <h4></h4>
+          <p></p>
+        </div>
+      </div>
+</body> 
+<script>
+    const requestUrl='https://api.github.com/users/rishang14'; 
+    const xhr =new XMLHttpRequest();   // created object 
+    xhr.open('GET',requestUrl) //sending request  ,open doesnt call automatically we have to do it manually    
+    xhr.onreadystatechange=function(){
+        
+        console.log(xhr.readyState)  
+        if(xhr.readyState===4){
+          const data=  this.responseText 
+          console.log(data.followers) 
+          console.log(data) //undefined => unable to accesss cuz typeof data is string 
+       
+            const changeDataIntoJson=JSON.parse(this.responseText) // now it changed into the json   
+            console.log(typeof changeDataIntoJson) // object 
+            console.log(changeDataIntoJson.followers)  
+     
+            document.querySelector('img').setAttribute("src",`${changeDataIntoJson.avatar_url}`) 
+            document.querySelector('h4').innerHTML= changeDataIntoJson.login; 
+            document.querySelector('p').innerHTML=changeDataIntoJson.bio
+        } 
+    }
+    xhr.send() // now open is called  
+     
+
+</script>
+</html>
