@@ -23,15 +23,65 @@
       <div class="day">tuesday</div>
       <div class="day">wednesday</div>
       <div class="day">thursday</div>
-    </div> 
+    </div>
     <div class="ul">
       <ul class="language">
         <li>Javascript</li>
       </ul>
     </div>
+    <h2>Amazing image</h2>
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
   </body>
   <script>
-    const parent = document.querySelector(".parent");         
+    const parent = document.querySelector(".parent");
     console.log(parent); // parent class
     console.log(parent.children); // Html collection of all children under parent element
     //   Note: we get html collection so we can use some array property
@@ -39,79 +89,130 @@
     console.log(parent.children[3].innerHTML); // thursday
     console.log(parent.children[5]); // undefined out of length of html collectoin
 
-    //  ...Accessing first and last child of parent elemnent                   
+    //  ...Accessing first and last child of parent elemnent
     console.log(parent.firstElementChild); //<div class="day">monday</div>
     console.log(parent.lastElementChild); //<div class="day">thursday</div>
 
     //  ...Accessing  parent element through child
     //   first store child element
     const childElement = document.querySelector(".day");
-    console.log(childElement.parentElement); //<div class="parent">…</div>  
-     
-    //  ...Acessing sibling element 
-    console.log(childElement.nextElementSibling); // means  the  element we get after monday     
-     
-   //.........Important point     
-    // Nodes 
-    console.log("Nodes:", parent.childNodes);// complex node like this NodeList(9) [text, div.day, text, div.day, text, div.day, text, div.day, text]
-  </script>  
-  <!-- ........How to create element  -->
-  <script> 
-  const div=document.createElement('div'); 
-  console.log(div);  
-  // adding class and id name 
-  div.classNaME="Created-div"; 
-  div.id="Created-Id";  
-  // another method is like this : 
-  div.setAttribute("class", "another-Class"); //overwrite the previous one 
-  div.setAttribute("id","another-id");//overwrite the previous one  
-  //  adding text under div 
-  div.innerText="I am created div ;"; 
-  // optimised way to do this is 
-  const createdText=document.createTextNode(" I am also created text"); 
-  div.appendChild(createdText);  // text is addded  and not overwrites previous one  
- // or 
- div.appendChild(document.createTextNode(" created text"));
- 
-  //  ..added our created child to main body 
-   document.body.appendChild(div);
-  </script> 
-  <!--  '''''''''''''''''''''''''''Adding list in unordered list '  -->
-  <script> 
-  //   <<<<<<<<<<<<<<Basic method>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    function addlanguage(langName){ 
-      const  li= document.createElement("li"); 
-      li.innerHTML=`${langName}`; 
-      document.querySelector('.language').appendChild(li)
+    console.log(childElement.parentElement); //<div class="parent">…</div>
 
-    } 
-    addlanguage('python'); 
-    addlanguage("typescript");  
-     
-    // optimise method ................. 
-    function addoptimiseLang(langName){ 
-      const li=document.createElement("li"); 
-      li.appendChild(document.createTextNode(langName)); // difference is this line only and it is debatable topic
-      document.querySelector(".language").appendChild(li); 
+    //  ...Acessing sibling element
+    console.log(childElement.nextElementSibling); // means  the  element we get after monday
 
-    } 
-    addoptimiseLang("go-lang")
-
-  </script> 
-  <!-- .........Editing list in unordered list --> 
-  <script>
-     const secondlang= document.querySelector("li:nth-child(4)");  
-    //  secondlang.innerHTML="jango" another method
-     const newli= document.createElement("li"); 
-     newli.textContent ="java";  // another method
-     secondlang.replaceWith(newli); 
-      
-     const firstLang= document.querySelector("li:first-child"); 
-     firstLang.outerHTML="<li>Django</li>"; 
-
-    //  removing 
-    
-     const lastlang= document.querySelector("li:last-child"); 
-     lastlang.remove(); // java is removed 
+    //.........Important point
+    // Nodes
+    console.log("Nodes:", parent.childNodes); // complex node like this NodeList(9) [text, div.day, text, div.day, text, div.day, text, div.day, text]
   </script>
-  </html>
+  <!-- ........How to create element  -->
+  <script>
+    const div = document.createElement("div");
+    console.log(div);
+    // adding class and id name
+    div.classNaME = "Created-div";
+    div.id = "Created-Id";
+    // another method is like this :
+    div.setAttribute("class", "another-Class"); //overwrite the previous one
+    div.setAttribute("id", "another-id"); //overwrite the previous one
+    //  adding text under div
+    div.innerText = "I am created div ;";
+    // optimised way to do this is
+    const createdText = document.createTextNode(" I am also created text");
+    div.appendChild(createdText); // text is addded  and not overwrites previous one
+    // or
+    div.appendChild(document.createTextNode(" created text"));
+
+    //  ..added our created child to main body
+    document.body.appendChild(div);
+  </script>
+  <!--  '''''''''''''''''''''''''''Adding list in unordered list '  -->
+  <script>
+    //   <<<<<<<<<<<<<<Basic method>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    function addlanguage(langName) {
+      const li = document.createElement("li");
+      li.innerHTML = `${langName}`;
+      document.querySelector(".language").appendChild(li);
+    }
+    addlanguage("python");
+    addlanguage("typescript");
+
+    // optimise method .................
+    function addoptimiseLang(langName) {
+      const li = document.createElement("li");
+      li.appendChild(document.createTextNode(langName)); // difference is this line only and it is debatable topic
+      document.querySelector(".language").appendChild(li);
+    }
+    addoptimiseLang("go-lang");
+  </script>
+  <!-- .........Editing list in unordered list -->
+  <script>
+    const secondlang = document.querySelector("li:nth-child(4)");
+    //  secondlang.innerHTML="jango" another method
+    const newli = document.createElement("li");
+    newli.textContent = "java"; // another method
+    secondlang.replaceWith(newli);
+
+    const firstLang = document.querySelector("li:first-child");
+    firstLang.outerHTML = "<li>Django</li>";
+
+    //  removing
+
+    const lastlang = document.querySelector("li:last-child");
+    lastlang.remove(); // java is removed
+  </script>
+  <!-- ..............Event listenenr ............. -->
+  <script>
+    // things to learn in event type,timpstamp,defaultPrevented,target,toelement,srcElement ,currentTarget
+    //clientX,clientY,screenx,screeny
+    //special access for keyboard ltr altkey,ctrlkey,shiftkey
+
+    document.getElementById("owl").addEventListener(
+      "click",
+      (e) => {
+        console.log(e);
+      },
+      false
+    ); //false is default  => Event bubbling => bottom element to top element 
+
+    // About event propogation
+    document.getElementById("images").addEventListener("click", (e) => {
+      console.log("clicked inside the ul ");
+    },true); 
+
+    document.getElementById("owl").addEventListener("click", (e) => {
+      console.log("owl clicked");
+    },true); // clicked inside the ul and then owl clicked bcz we are using event capturing in this it goes like top element  to bottom element  
+     
+    
+    
+    document.getElementById("owl").addEventListener("click", (e) => { 
+      e.stopPropagation();
+      console.log("owl clicked"); // owl clicked it stops the bubbling means element will not goes to upper element 
+    },true); 
+
+    document.getElementById('google').addEventListener('click',(e)=>{ 
+      console.log('google clicked'); 
+      e.preventDefault(); 
+      e.stopPropagation();
+
+    },false)
+    
+  </script> 
+  <script>
+    document.querySelector('#images').addEventListener('click',(e)=>{ 
+      console.log(e.target.parentNode); // give the parent element  => li  in this case   
+      if(e.target.tagName=== "IMG"){ 
+        console.log(e.target.id)
+      let  removeIT=e.target.parentNode;  
+      removeIT.remove(); 
+      //  another method  
+      // removeIT.parentNode.removeChild(removeIT);   
+    
+       } 
+       
+
+        
+    },false)
+  </script>
+</html>
