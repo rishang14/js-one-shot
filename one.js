@@ -798,39 +798,130 @@ const anothernumm = numers
 
 console.log(anothernumm);
 
-// .............REDUCE................................ 
+// .............REDUCE................................
 
-const values=[1,2,3] 
-  
-const myTotal=values.reduce((acc,curval)=>{   // acc=> accumulator, curval=>currentvalue
-  console.log(`acc: ${acc}, curval:${curval}`) 
-  return acc + curval
+const values = [1, 2, 3];
 
-},0) //acc doesn't know from where to start so we have to pass initial value in this case we are passing 0
- 
-console.log(myTotal) 
+const myTotal = values.reduce((acc, curval) => {
+  // acc=> accumulator, curval=>currentvalue
+  console.log(`acc: ${acc}, curval:${curval}`);
+  return acc + curval;
+}, 0); //acc doesn't know from where to start so we have to pass initial value in this case we are passing 0
 
-const shoppingCart =[
+console.log(myTotal);
+
+const shoppingCart = [
   {
-    itemName:"js course", 
-    price:999
+    itemName: "js course",
+    price: 999,
   },
   {
-    itemName:"java course", 
-    price:1999
+    itemName: "java course",
+    price: 1999,
   },
   {
-    itemName:"python course", 
-    price:3999
+    itemName: "python course",
+    price: 3999,
   },
   {
-    itemName:"web dev course", 
-    price:9999
-  } 
-] 
+    itemName: "web dev course",
+    price: 9999,
+  },
+];
+
+const priceToPay = shoppingCart.reduce((acc, item) => acc + item.price, 0);
+console.log(priceToPay); //16996
+
+// ................Promises .......................
+
+/// creating a promise
+
+const promiseOne = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("async programming");
+    resolve(); // now .then is connected with the promise
+  }, 1000);
+});
+
+//  now consumption of resolve and reject
+
+// .then give us a callback mean a function
+
+promiseOne.then(() => {
+  console.log("promise consumed");
+}); // .then is directly connected to .then
+
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("async task 2 ");
+    resolve();
+  }, 2000);
+}).then(() => {
+  console.log("Async 2 resolved");
+});
+
+const thirdPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve({ username: "rishang", email: "gabru@gbaru" }); //passing this to .then bcz both are connected we k now that
+  }, 1000);
+});
+
+thirdPromise.then((user) => {
+  //here storing that obj in user
+  console.log(user); //{ username: 'rishang', email: 'gabru@gbaru' }
+  console.log(user.username, user.email);
+});
+
+const promiseFour = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    let error = false;
+    if (!error) {
+      resolve({ username: "rishang", age: 20 });
+    } else {
+      reject("something went wrong");
+    }
+  }, 1000);
+});
+
+promiseFour
+  .then((user) => {
+    console.log(user);
+    return user.age;
+  })
+  .then((age) => {
+    console.log(age);
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+  .finally(()=> console.log("promise is either  resolved or rejected"))
  
-const priceToPay=shoppingCart.reduce((acc,item)=> acc + item.price,0); 
-console.log(priceToPay) //16996 
+
+
+  const promisefive=new Promise((resolve,reject)=>{
+    setTimeout(() => {
+      let error = true;
+      if (!error) {
+        resolve({ username: "js", password:123 });
+      } else {
+        reject("js went wrong");
+      }
+    }, 1000);
+  }) 
+   
+   
+
+async function consumePromiseFive(){ 
+  //wrap in a try catch cuz async await cant handle error by themself
+    try {
+      const response= await promisefive 
+      console.log(response)     
+    } catch (error) {
+       console.log(error)
+    }
+} 
+consumePromiseFive(); 
+
  
- 
- 
+// ............''''''''''''' object oriented programming ............................. 
+

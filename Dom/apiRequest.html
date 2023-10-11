@@ -21,9 +21,9 @@
     xhr.onreadystatechange = function () {
       console.log(xhr.readyState)
       if(xhr.readyState===4){   // doesnt related to accessing data 
-      const data = this.responseText; // we get a responsetext and by using this we are accessing it 
-      console.log(data.followers); //undefined => unable to accesss cuz typeof data is string
-      console.log(data);
+      const data = this.responseText; // we get a responsetext and by using this we are accessing data 
+      console.log( typeof data); //string 
+      console.log(data.followers); //undefined => unable to accesss cuz typeof data is string most of the time 
       const changeDataIntoJson = JSON.parse(this.responseText); // now it changed into the json
       console.log(typeof changeDataIntoJson); // object
       console.log(changeDataIntoJson.followers);
