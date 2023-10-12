@@ -894,34 +894,172 @@ promiseFour
   .catch((error) => {
     console.log(error);
   })
-  .finally(()=> console.log("promise is either  resolved or rejected"))
- 
+  .finally(() => console.log("promise is either  resolved or rejected"));
 
-
-  const promisefive=new Promise((resolve,reject)=>{
-    setTimeout(() => {
-      let error = true;
-      if (!error) {
-        resolve({ username: "js", password:123 });
-      } else {
-        reject("js went wrong");
-      }
-    }, 1000);
-  }) 
-   
-   
-
-async function consumePromiseFive(){ 
-  //wrap in a try catch cuz async await cant handle error by themself
-    try {
-      const response= await promisefive 
-      console.log(response)     
-    } catch (error) {
-       console.log(error)
+const promisefive = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    let error = true;
+    if (!error) {
+      resolve({ username: "js", password: 123 });
+    } else {
+      reject("js went wrong");
     }
-} 
-consumePromiseFive(); 
+  }, 1000);
+});
 
+async function consumePromiseFive() {
+  //wrap in a try catch cuz async await cant handle error by themself
+  try {
+    const response = await promisefive;
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+}
+consumePromiseFive();
+
+// ............''''''''''''' object oriented programming .............................
+
+/*  
+#object  
+- collection of properties of methods 
+  
+-------Constructor function 
+-------Prototypes 
+-------Classes 
+-------Instances (new, this )  things to learn by self 
  
-// ............''''''''''''' object oriented programming ............................. 
 
+
+
+*/
+
+function userrr(user, logCOunt, isLoggedIn) {
+  this.user = user; //LHS=VARIABLE , RHS= VALUE
+  this.logCOunt = logCOunt;
+  this.isLoggedIn = isLoggedIn;
+
+  return this;
+}
+
+const useroNE = new userrr("rishang", 12, false);
+console.log(useroNE);
+console.log(useroNE.constructor); // [Function: userrr]  refrence to itself
+
+/* Note=> After using new keyboard   
+
+1.created empty obj 
+2. constructor() call 
+3.  argument injected 
+4. we got values  
+*/
+
+// ............................. new key word  ...................... 
+ 
+function  multipleby5(num){ 
+  return num*5
+} 
+ 
+multipleby5.power=4 ; 
+
+console.log(multipleby5(3));   // 15
+console.log(multipleby5.power);   //4 
+console.log(multipleby5.prototype) // {} - empty obj 
+ 
+ 
+function createUsr(username,score){
+   this.username= username 
+   this.score=score
+}
+ 
+createUsr.prototype.increment=function(){
+  this.score++ // we are using this  to specify whom call is this 
+} 
+ 
+const chai= new createUsr("chai",20); 
+const tea= new createUsr("tea", 250); 
+
+chai.increment();  // 20  
+/*
+
+Here's what happens behind the scenes when the new keyword is used:
+
+A new object is created: The new keyword initiates the creation of a new JavaScript object.
+
+A prototype is linked: The newly created object gets linked to the prototype property of the constructor function. This means that it has access to properties and methods defined on the constructor's prototype.
+
+The constructor is called: The constructor function is called with the specified arguments and this is bound to the newly created object. If no explicit return value is specified from the constructor, JavaScript assumes this, the newly created object, to be the intended return value.
+
+The new object is returned: After the constructor function has been called, if it doesn't return a non-primitive value (object, array, function, etc.), the newly created object is returned.
+
+*/ 
+ 
+ 
+ 
+// ........''''''''''''''Prototype section ''''''''''''........ 
+
+let myHero= ["thor","spidey"] ; 
+ 
+let heropower={
+   throw: "hammer", 
+   spiderman: "sling",
+    
+   getspiderPower:function(){
+    console.log(`Spiderman power is ${this.spiderman}`)
+   }
+} 
+console.log(heropower.getspiderPower()); 
+ 
+ 
+Object.prototype.createdMethod= ()=>{ // we created our method but directly via top hirerichay bcz everthing is obj 
+  console.log("i am injected via prototype and available everywhere") 
+}  
+
+Array.prototype.anotherCreatedMethod=()=>{
+  console.log("am i available everywhere"); 
+}
+ 
+ // Now lets check 
+ console.log(myHero.createdMethod());     //i am injected via prototype and avail in everywhere
+ console.log(heropower.createdMethod()); // i am injected via prototype and avail in everywhere 
+  console.log(myHero.anotherCreatedMethod()) // am i available everywhere
+ // console.log(heropower.anotherCreatedMethod())   error
+ 
+  
+
+ //// ................Inheritance-------------------- 
+  
+ const User = {
+  name: "chai",
+  email: "chai@google.com"
+}
+
+const Teacher = {
+  makeVideo: true
+}
+
+const TeachingSupport = {
+  isAvailable: false
+}
+
+const TASupport = {
+  makeAssignment: 'JS assignment',
+  fullTime: true,
+  __proto__: TeachingSupport
+}
+
+Teacher.__proto__ = User
+
+// modern syntax
+Object.setPrototypeOf(TeachingSupport, Teacher)
+
+let anotherUsername = "ChaiAurCode     "
+
+String.prototype.trueLength = function(){
+  console.log(`${this}`);
+  console.log(`True length is: ${this.trim().length}`);
+}
+
+anotherUsername.trueLength()
+"hitesh".trueLength()
+"iceTea".trueLength()
