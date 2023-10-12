@@ -1063,3 +1063,120 @@ String.prototype.trueLength = function(){
 anotherUsername.trueLength()
 "hitesh".trueLength()
 "iceTea".trueLength()
+ 
+ 
+ //............'''''''' Call and this .................. 
+
+
+function setname(name) { 
+  this.name=name
+  
+}
+ 
+function createUser(username,email,password){  
+
+
+  setname.call(this,username) // .call for explicitly calling and holding the refrence 
+  //here we have to pass this for the context of  createuser function  using 
+  this.email=email; 
+  this.password=password;
+
+} 
+  
+const calling= new createUser("dino","dino@gmail.com",123); 
+console.log(calling) 
+
+ 
+// .........'''''''''''''''class ;;'''''''''''''''''''''' 
+  
+class userssss{ 
+  constructor(userName,password,email){ 
+    this.userName=userName; 
+    this.password=password;  
+    this.email=email; 
+
+
+
+    
+
+
+  } 
+  encryptPassword(){ return `${this.password}`} 
+   
+  changeToUppercase(){ return this.userName.toUpperCase()}
+
+}
+ 
+const myUsers= new userssss("rishang",123,"email@.com"); 
+ 
+console.log(myUsers.changeToUppercase()); 
+console.log(myUsers.encryptPassword());  
+
+
+// behind the scene   of class code
+ 
+function user_(userName,password,email){ 
+  this.userName=userName; 
+  this.password=password;  
+  this.email=email;  
+} 
+ 
+user_.prototype.encryptPassword=function(){
+   return   `${this.password}`
+}  
+
+user_.prototype.changeToUppercase=function(){
+   return   `${this.userName.toUpperCase()}`
+} 
+
+const userForUser_= new user_("zorodono","4444","email,1234") 
+
+console.log(userForUser_.encryptPassword()) //4444
+console.log(userForUser_.changeToUppercase()) //ZORODONO 
+ 
+ 
+
+//[[[[[[[[[[[[[[[[[[ INHERITANCE ]]]]]]]]]]]]]]]]]]  
+ 
+class student{
+  constructor(username){
+    this.username=username
+  } 
+
+  logme(){
+    console.log(`Username is  ${this.username}`)
+  }
+
+    static friends(){ // after using static word no one can access only student access
+     console.log("friend  name is luffy")
+  }
+} 
+
+ class Teachr extends student {  
+  constructor(username,email,password){ 
+      
+    super(username); // special keyword which 
+    this.email=email; 
+    this.password=password
+
+  } 
+
+  addcourse(){
+    console.log(`added course is ${this.username}`)
+  }
+
+ }
+ 
+
+const checkForTechr=new Teachr("hitesh","hitesh.com",123); 
+console.log(checkForTechr.addcourse());  
+console.log(checkForTechr.logme()); // Username is  hitesh bcz teacher is extended version of student 
+
+const checkForStudent= new student("gabs");  
+student.friends() // friend name is luffy  
+// console.log(checkForStudent.friends());  not accessible bcz of static keyword
+// console.log(checkForStudent.addcourse())  not accessible bcz its not student function  
+console.log(checkForStudent.logme()) //Username is  gabs bcz its student () 
+ 
+console.log(checkForStudent=== checkForTechr) //false
+console.log(checkForStudent== checkForTechr) //false
