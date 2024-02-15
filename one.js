@@ -1179,4 +1179,6 @@ student.friends() // friend name is luffy
 console.log(checkForStudent.logme()) //Username is  gabs bcz its student () 
  
 console.log(checkForStudent=== checkForTechr) //false
+console.log(checkForStudent== checkForTechr) //fals
+console.log(checkForStudent=== checkForTechr) //false
 console.log(checkForStudent== checkForTechr) //false
