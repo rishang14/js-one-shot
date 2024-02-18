@@ -1,4 +1,4 @@
-// **JavaScript is a dynamically typed language. Because data type will automatically assigned at the time of compilation or code execution.
+console.log(checkForStudent=== checkForTechr) //false// **JavaScript is a dynamically typed language. Because data type will automatically assigned at the time of compilation or code execution.
 "use strict"; //treat all js code as newer version
 //  *************************data types***************************
 /* 
