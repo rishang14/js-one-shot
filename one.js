@@ -1176,9 +1176,4 @@ const checkForStudent= new student("gabs");
 student.friends() // friend name is luffy  
 // console.log(checkForStudent.friends());  not accessible bcz of static keyword
 // console.log(checkForStudent.addcourse())  not accessible bcz its not student function  
-console.log(checkForStudent.logme()) //Username is  gabs bcz its student () 
- 
-console.log(checkForStudent=== checkForTechr) //false
-console.log(checkForStudent== checkForTechr) //fals
-console.log(checkForStudent=== checkForTechr) //false
-console.log(checkForStudent== checkForTechr) //false
+console.log(checkForStudent.logme()) //Username is  gabs bcz its stud
